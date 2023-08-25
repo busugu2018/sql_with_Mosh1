@@ -115,6 +115,27 @@ FROM sql_store.order_items;
 
 
 
+-- Not from Mosh
+
+select studentID, FullName, sat_score
+from student
+where 
+  (
+    studentID between 1 
+    and 5 -- inclusive
+    or studentID = 8 
+    or FullName like '%Maximo%'
+  ) 
+  and sat_score NOT in (1000, 1400)
+order by FullName DESC;
+
+
+
+
+
+
+
+
 
 
 
