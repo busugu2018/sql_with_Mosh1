@@ -1,4 +1,4 @@
---SQL review
+-- SQL review
 
 SELECT * from sql_store.customers;
 
@@ -48,7 +48,7 @@ select
 	state 
 from customers;
 
-
+SELECT DISTINCT state FROM customers;
 
 select * 
 from orders;
@@ -67,9 +67,29 @@ select
 from products;
 
 
+
+
+
+-- WHERE CLAUSE... 
+-- Comparaison operators <, >, =, <=, >=, not equal (<> same as !=)
+
+SELECT * 
+FROM customers 
+WHERE points>3000;
+
+SELECT * 
+FROM customers 
+WHERE state='VA';
+
+
+SELECT * 
+FROM customers 
+WHERE city <> 'Atlanta';
+
+
 select *  
 from orders 
-where oreder_date >= '2019-01-01';
+where order_date >= '2019-01-01';
 
 
 select *  
@@ -81,6 +101,10 @@ select *
 from customers 
 where birth_date > '1990-01-01';
 
+
+-- AND/OR OPERATORS.... AND is always evaluated first
+-- () override all other operations
+-- * and / override other operations
 
 
 select * 
@@ -107,27 +131,6 @@ FROM sql_store.orders;
 
 SELECT * 
 FROM sql_store.order_items;
-
-
-
-
-
-
-
-
--- Not from Mosh
-
-select studentID, FullName, sat_score
-from student
-where 
-  (
-    studentID between 1 
-    and 5 -- inclusive
-    or studentID = 8 
-    or FullName like '%Maximo%'
-  ) 
-  and sat_score NOT in (1000, 1400)
-order by FullName DESC;
 
 
 
