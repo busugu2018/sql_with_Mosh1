@@ -384,5 +384,66 @@ select first_name, last_name, 10 as points
 from customers
 order by 1, 2; -- to avoid , always doing it by name
 
+-- Limit Clause:
+
+select *
+from customers
+limit 3;
+
+-- Limit > total, gives total:
+select *
+from customers
+limit 300;
+
+
+
+-- page 1: 1-3
+-- page 1: 4-6
+-- page 1: 7-9
+-- If we want to retrieve informations on page3 7-9, ...
+-- we wanna skip the first 2 pages, first 6 records and then pick 3 records
+
+select *
+from customers
+limit 6, 3;
+
+-- exo
+-- Get the top three loyal customers
+select *
+from customers 
+order by points desc
+limit 3;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
