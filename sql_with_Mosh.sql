@@ -414,6 +414,87 @@ from customers
 order by points desc
 limit 3;
 
+select *
+from customers 
+where points > 2000
+order by points desc
+limit 3;
+
+
+-- select table from multiple tables
+
+select *
+from orders
+inner join customers;
+
+select *
+from orders join customers
+on orders.customer_id = customers.customer_id;
+
+select order_id, first_name, last_name
+from orders join customers
+on orders.customer_id = customers.customer_id;
+
+-- quantify them with the name of their table
+
+-- this below is wrong  
+select order_id, customer_id, first_name, last_name
+from orders join customers
+on orders.customer_id = customers.customer_id;
+-- because orders and customers have the same "customer_id"
+
+-- this below is right  
+select order_id, orders.customer_id, first_name, last_name
+from orders join customers
+on orders.customer_id = customers.customer_id;
+-- we needed to have customer_id specified with: 
+-- orders.customer_id or customers.customer_id
+
+
+-- alias
+select order_id, o.customer_id, first_name, last_name
+from orders o
+join customers c
+on o.customer_id = c.customer_id;
+
+
+-- exo:
+-- join products and order_item table
+
+select * 
+from order_items join products;
+
+select * 
+from order_items oi join products pr
+on oi.product_id = pr.product_id;
+
+select order_id, oi.product_id, quantity, oi.unit_price
+from order_items oi join products pr
+on oi.product_id = pr.product_id;
+
+-- combining tables from different DBs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
