@@ -479,6 +479,18 @@ from order_items oi
 join sql_inventory.products p
 on oi.product_id = p.product_id;
 
+ 
+-- Joining accross DBs
+-- same table in both libraries (Not to be done)
+-- Join th product table with sql inventory DB
+
+USE sql_inventory;
+
+Select *
+from order_items oi
+join sql_inventory.products p
+	on oi.product_id = p.product_id
+
 
 
 
