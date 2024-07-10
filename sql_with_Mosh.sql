@@ -484,15 +484,69 @@ on oi.product_id = p.product_id;
 -- same table in both libraries (Not to be done)
 -- Join th product table with sql inventory DB
 
-USE sql_inventory;
-
 Select *
-from order_items oi
-join sql_inventory.products p
+from sql_store.order_items oi
+join products p
 	on oi.product_id = p.product_id
 
 
+-- sql self join
 
+use sql_hr;
+
+select *
+from employees e
+join employees m
+	on e.reports_to = m.employee_id;
+    
+select e.employee_id,
+		e.first_name,
+        m.first_name as manager
+from employees e
+join employees m
+	on e.reports_to = m.employee_id;
+
+
+
+
+-- Joining multiple tablesorder_statusesorders
+
+use sql_store;
+
+select *
+from orders o
+join customers c 
+	on  o.customer_id = c.customer_id
+join order_statuses os
+	on o.status = os.order_status_id;
+
+select 
+	o.order_id,
+    o.order_date,
+    c.first_name,
+    c.last_name,
+    os.name as status
+from orders o
+join customers c 
+	on  o.customer_id = c.customer_id
+join order_statuses os
+	on o.status = os.order_status_id;
+    
+use sql_invoicing;
+
+select 
+	c.name,
+    p.date,
+    p.invoice_id,
+    p.amount,
+	pm.name as payment_names
+from clients c
+join payments p 
+	on c.client_id = p.client_id
+join payment_methods pm 
+	on p.payment_method = pm.payment_method_id
+
+    
 
 
 
