@@ -544,7 +544,7 @@ from clients c
 join payments p 
 	on c.client_id = p.client_id
 join payment_methods pm 
-	on p.payment_method = pm.payment_method_id
+	on p.payment_method = pm.payment_method_id;
     
     
 -- Compounds joining conditions
@@ -557,7 +557,13 @@ join order_item_notes oin
 	on oi.order_id = oin.order_id
     and oi.product_id = oin.product_id;
     
-    
+
+-- Implicit join syntax
+
+select * 
+from orders o
+join customers c 
+	on o.customer_id = c.customer_id
 
 
 
