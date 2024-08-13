@@ -560,21 +560,83 @@ join order_item_notes oin
 
 -- Implicit join syntax
 
+-- NO Implicit join syntax
+-- Explicit join syntax
 select * 
 from orders o
 join customers c 
-	on o.customer_id = c.customer_id
+	on o.customer_id = c.customer_id;
 
 
+-- this is an Implicit join syntax   (Not recommended to be used, because 
+-- we could accidently forget the "where" clause) 
+select *
+from orders o, customers c
+where o.customer_id = c.customer_id;
 
 
+-- Outer join
+
+select 
+	c.customer_id,
+	c.first_name,
+	o.order_id
+from customers c
+join orders o
+	on c.customer_id = o.customer_id 
+order by c.customer_id;
 
 
+select 
+	c.customer_id,
+	c.first_name,
+	o.order_id
+from customers c
+left join orders o
+	on c.customer_id = o.customer_id 
+order by c.customer_id; 
 
 
+select 
+	c.customer_id,
+	c.first_name,
+	o.order_id
+from customers c
+right join orders o
+	on c.customer_id = o.customer_id 
+order by c.customer_id;
+
+-- If we want everything like on left join
+select 
+	c.customer_id,
+	c.first_name,
+	o.order_id
+from orders o
+right join customers c
+	on c.customer_id = o.customer_id 
+order by c.customer_id;
 
 
+select 
+	c.customer_id,
+	c.first_name,
+	o.order_id
+from orders o
+right outer join customers c
+	on c.customer_id = o.customer_id 
+order by c.customer_id;
 
+-- Exercise:
+select 
+	p.product_id,
+    p.name,
+    oi.quantity
+from products p
+right join order_items oi
+	on p.product_id = oi.product_id
+order by product_id;
+
+-- Outer join between multiple tables:
 
 
 
