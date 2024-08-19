@@ -584,7 +584,7 @@ select
 from customers c
 join orders o
 	on c.customer_id = o.customer_id 
-order by c.customer_id;
+order by c.customer_id; 
 
 
 select 
@@ -636,16 +636,90 @@ right join order_items oi
 	on p.product_id = oi.product_id
 order by product_id;
 
+-- solution of exercise
+select
+	c.customer_id,
+	c.first_name,
+    o.order_id
+From customers c
+left join orders o
+	on c.customer_id = o.customer_id
+order by c.customer_id;
+
+
+
 -- Outer join between multiple tables:
 
+select
+	c.customer_id,
+	c.first_name,
+    o.order_id
+From customers c
+left join orders o
+	on c.customer_id = o.customer_id
+join shippers sh
+	on o.shipper_id = sh.shipper_id
+order by c.customer_id;
+
+-- add a left join because we want... 
+-- the ones "NULL" (weither they have an order orn not) in our table
+select
+	c.customer_id,
+	c.first_name,
+    o.order_id
+From customers c
+left join orders o
+	on c.customer_id = o.customer_id
+left join shippers sh
+	on o.shipper_id = sh.shipper_id
+order by c.customer_id;
+ 
+-- add a left join because we want... 
+-- the ones "NULL" (weither they have an order orn not) in our table
+-- "NULL" (weither they have an order or not) & (weither they have a shipper or not)
+select
+	c.customer_id,
+	c.first_name,
+    o.order_id,
+    sh.name as shipper
+From customers c
+left join orders o
+	on c.customer_id = o.customer_id
+left join shippers sh
+	on o.shipper_id = sh.shipper_id
+order by c.customer_id;
+
+-- AS BEST PRACTICE: Avoid using right join.
+
+-- EXERCISE:
+
+ select 
+	o.order_date, -- correct
+    o.order_id, -- correct
+    c.first_name, -- correct
+    sh.name as name, -- correct
+    o.name as status -- correst
+from orders o
+left join customers c -- This is false, we should use inner join (join) beacause every order has a customer
+	on c.customer_id = o.customer_id
+left join shippers sh
+	on ;
 
 
-
-
-
-
-
-
+-- solution
+select 
+	o.order_date,
+    o.order_id,
+    c.first_name as customer,
+    sh.name as shipper,
+    os.name as status
+from orders o
+join customers c 
+	on c.customer_id = o.customer_id
+left join shippers sh
+	on o.shipper_id = sh.shipper_id
+join otrder_statuses os
+	on o.status = sh.order_status_id;
 
 
 
