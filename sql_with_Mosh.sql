@@ -691,14 +691,14 @@ order by c.customer_id;
 
 -- AS BEST PRACTICE: Avoid using right join.
 
--- EXERCISE:
+-- EXERCISE (My take):
 
  select 
 	o.order_date, -- correct
     o.order_id, -- correct
     c.first_name, -- correct
     sh.name as name, -- correct
-    o.name as status -- correst
+    o.name as status -- correct
 from orders o
 left join customers c -- This is false, we should use inner join (join) beacause every order has a customer
 	on c.customer_id = o.customer_id
@@ -706,11 +706,11 @@ left join shippers sh
 	on ;
 
 
--- solution
+-- solution 
 select 
 	o.order_date,
     o.order_id,
-    c.first_name as customer,
+    c.first_name,
     sh.name as shipper,
     os.name as status
 from orders o
@@ -718,8 +718,8 @@ join customers c
 	on c.customer_id = o.customer_id
 left join shippers sh
 	on o.shipper_id = sh.shipper_id
-join otrder_statuses os
-	on o.status = sh.order_status_id;
+join order_statuses os
+	on o.status = os.order_status_id;
 
 
 
