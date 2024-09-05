@@ -28,7 +28,7 @@ SELECT
     points,  
     points+10,  
     ((points*10)+100)  
-    from customers 
+    from customers
     -- where customer_id = 10;
 ;
 
@@ -141,6 +141,12 @@ from order_items
 where order_id = 6 and 
 	(quantity * unit_price > 30);
 
+-- same here
+select * 
+from order_items 
+where order_id = 6 and 
+	(quantity * unit_price) > 30;
+    
 select * 
 from customers
 where state = 'VA' OR state = 'GA' OR state = 'FL';
@@ -720,9 +726,87 @@ left join shippers sh
 	on o.shipper_id = sh.shipper_id
 join order_statuses os
 	on o.status = os.order_status_id;
+    
+-- Self Outter join
+
+use sql_hr;
+
+select *
+from employees e
+join employees m
+	on e.reports_to = m.employee_id
+    
 
 
 
+
+-- SQL EXERCISES W3SCHOOL
+
+-- Insert the missing statement to get all the columns from the Customers table.
+
+-- Write a statement that will select the City column from the Customers table.
+
+-- Select all the different values from the Country column in the Customers table.
+
+-- Select all records where the City column has the value "Berlin".
+
+-- Select all records where the CustomerID column has the value 32.
+
+-- Select all records from the Customers table, sort the result alphabetically by the column City.
+
+-- Select all records from the Customers table, sort the result reversed alphabetically by the column City.
+
+-- Select all records from the Customers table, sort the result alphabetically, first by the column Country, then, by the column City.
+
+-- Select all records where the City column has the value 'Berlin' and the PostalCode column has the value '12209'.
+
+-- Select all records where the City column has the value 'Berlin' OR 'London'.
+
+-- Use the NOT keyword to select all records where City is NOT "Berlin".
+
+-- Insert a new record in the Customers table.
+
+-- Select all records from the Customers where the PostalCode column is empty.
+
+-- Select all records from the Customers where the PostalCode column is NOT empty.
+
+-- Update the City column of all records in the Customers table.
+
+-- Set the value of the City columns to 'Oslo', but only the ones where the Country column has the value "Norway".
+
+-- Update the City value and the Country value.
+
+-- Delete all the records from the Customers table where the Country value is 'Norway'.
+
+-- Delete all the records from the Customers table.
+
+-- Use the MIN function to select the record with the smallest value of the Price column.
+
+-- Use an SQL function to select the record with the highest value of the Price column.
+
+-- Use the correct function to return the number of records that have the Price value set to 18.
+
+-- Use an SQL function to calculate the average Price of all products.
+
+-- Use an SQL function to calculate the sum of all the Price column values in the Products table.
+
+-- Select all records where the value of the City column starts with the letter "a".
+
+-- Select all records where the value of the City column ends with the letter "a".
+
+-- Select all records where the value of the City column contains the letter "a".
+
+-- Select all records where the value of the City column starts with letter "a" and ends with the letter "b".
+
+-- Select all records where the value of the City column does NOT start with the letter "a".
+
+-- Select all records where the second letter of the City is an "a".
+
+-- Select all records where the first letter of the City is an "a" or a "c" or an "s".
+
+-- Select all records where the first letter of the City starts with anything from an "a" to an "f".
+
+-- Select all records where the first letter of the City is NOT an "a" or a "c" or an "f".
 
 
 
